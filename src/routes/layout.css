@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+html {
+	font-family:
+		Inter,
+		Pretendard,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		sans-serif;
+	background: #f7f5ef;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	min-width: 320px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+	outline: 2px solid #446e83;
+	outline-offset: 3px;
+}
+
+::selection {
+	background: #cbdad3;
+	color: #20201f;
+}
