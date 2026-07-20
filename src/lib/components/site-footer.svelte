@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { ExternalLink } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
+	import { ExternalLink } from '@lucide/svelte';
 
 	let {
 		tagline,

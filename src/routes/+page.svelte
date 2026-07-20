@@ -33,8 +33,8 @@
 		saveBeforeCapture,
 		type StoredCapture
 	} from '$lib/domains/comparison/client/storage';
-	import LanguageButton from '$lib/components/LanguageButton.svelte';
-	import SiteFooter from '$lib/components/SiteFooter.svelte';
+	import LanguageButton from '$lib/components/language-button.svelte';
+	import SiteFooter from '$lib/components/site-footer.svelte';
 
 	type Stage = 'landing' | 'camera' | 'review' | 'analyzing' | 'result' | 'comparison';
 	type Scenario = 'interview' | 'meeting' | 'presentation' | 'profile';

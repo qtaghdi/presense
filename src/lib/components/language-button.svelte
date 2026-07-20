@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Languages } from '@lucide/svelte';
 	import type { Locale } from '$lib/i18n/messages';
+	import { Languages } from '@lucide/svelte';
 
 	let {
 		locale,

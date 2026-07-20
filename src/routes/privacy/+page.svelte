@@ -9,8 +9,8 @@
 		Send,
 		ShieldCheck
 	} from '@lucide/svelte';
-	import LanguageButton from '$lib/components/LanguageButton.svelte';
-	import SiteFooter from '$lib/components/SiteFooter.svelte';
+	import LanguageButton from '$lib/components/language-button.svelte';
+	import SiteFooter from '$lib/components/site-footer.svelte';
 	import { isLocale, type Locale } from '$lib/i18n/messages';
 	import { privacyMessages } from '$lib/i18n/privacy';
 
