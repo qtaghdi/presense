@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" role="img" aria-labelledby="title">
+  <title id="title">Presence mark</title>
+  <path d="M0 8H8V48H0Z" fill="#FFFFFF"/>
+  <path d="M8 8H22C31 8 36 13.5 36 22C36 30.5 31 36 22 36H8V29H21.5C26 29 28.5 26.5 28.5 22C28.5 17.5 26 15 21.5 15H8Z" fill="#FFFFFF"/>
+  <path d="M20 0H48V7H20Z" fill="#FFFFFF"/>
+  <path d="M41 0H48V56H41Z" fill="#FFFFFF"/>
+  <path d="M24 49H48V56H24Z" fill="#FFFFFF"/>
+</svg>

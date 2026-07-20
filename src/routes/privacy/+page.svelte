@@ -10,6 +10,7 @@
 		ShieldCheck
 	} from '@lucide/svelte';
 	import LanguageButton from '$lib/components/LanguageButton.svelte';
+	import SiteFooter from '$lib/components/SiteFooter.svelte';
 	import { isLocale, type Locale } from '$lib/i18n/messages';
 	import { privacyMessages } from '$lib/i18n/privacy';
 
@@ -38,8 +39,13 @@
 
 <header class="privacy-header">
 	<a class="brand" href={resolve('/')} aria-label={copy.navigation.home}>
-		<span class="brand-mark">P</span>
-		<span translate="no">Presence</span>
+		<img
+			class="brand-lockup"
+			src="/presence-logo-assets/presence-lockup.svg"
+			alt=""
+			width="191"
+			height="40"
+		/>
 	</a>
 	<div class="header-actions">
 		<a class="back-link" href={resolve('/')}>
@@ -164,11 +170,18 @@
 	</div>
 </main>
 
-<footer>
-	<span translate="no">Presence</span>
-	<p>{copy.footer.source}</p>
-	<a href={resolve('/')}>{copy.footer.home}</a>
-</footer>
+<SiteFooter
+	tagline={copy.footer.tagline}
+	disclaimer={copy.prototype.body}
+	source={copy.footer.source}
+	status={copy.footer.status}
+	navigationLabel={copy.footer.navigation}
+	primaryHref="/"
+	primaryLabel={copy.footer.home}
+	externalLabel={copy.footer.issues}
+	externalAriaLabel={copy.footer.issuesExternal}
+	externalDestination="issues"
+/>
 
 <style>
 	:global(:root) {
@@ -217,25 +230,18 @@
 		border-bottom: 1px solid var(--privacy-line);
 	}
 	.brand {
+		min-height: 44px;
 		display: flex;
 		align-items: center;
-		gap: 10px;
 		color: var(--privacy-ink);
 		font-size: 16px;
 		font-weight: 700;
 		text-decoration: none;
 	}
-	.brand-mark {
-		width: 32px;
+	.brand-lockup {
+		display: block;
+		width: auto;
 		height: 32px;
-		display: grid;
-		place-items: center;
-		border: 1px solid #7d8993;
-		border-radius: 7px;
-		background: #fff;
-		color: #2f526d;
-		font-size: 13px;
-		font-weight: 800;
 	}
 	.header-actions,
 	.back-link {
@@ -504,8 +510,7 @@
 		text-transform: uppercase;
 	}
 	.provider-links a,
-	.contact-card a,
-	footer a {
+	.contact-card a {
 		display: inline-flex;
 		align-items: center;
 		gap: 5px;
@@ -559,28 +564,6 @@
 		border-color: #8499a8;
 		background: #f8fafb;
 	}
-	footer {
-		min-height: 90px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 22px;
-		padding: 22px 30px;
-		border-top: 1px solid var(--privacy-line);
-		color: #7b8790;
-		font-size: 10px;
-	}
-	footer > span {
-		color: #42515d;
-		font-size: 12px;
-		font-weight: 800;
-	}
-	footer p {
-		margin: 0;
-		padding: 0 22px;
-		border-right: 1px solid var(--privacy-line);
-		border-left: 1px solid var(--privacy-line);
-	}
 	@media (max-width: 820px) {
 		.privacy-highlights {
 			grid-template-columns: 1fr;
@@ -628,6 +611,9 @@
 		.privacy-header {
 			height: 68px;
 			padding: 0 18px;
+		}
+		.brand-lockup {
+			height: 29px;
 		}
 		.back-link {
 			display: none;
@@ -694,17 +680,6 @@
 		}
 		.contact-card {
 			padding: 20px;
-		}
-		footer {
-			flex-wrap: wrap;
-			gap: 10px 16px;
-		}
-		footer p {
-			order: 3;
-			width: 100%;
-			padding: 0;
-			border: 0;
-			text-align: center;
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {

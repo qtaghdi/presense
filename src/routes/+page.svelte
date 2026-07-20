@@ -34,6 +34,7 @@
 		type StoredCapture
 	} from '$lib/domains/comparison/client/storage';
 	import LanguageButton from '$lib/components/LanguageButton.svelte';
+	import SiteFooter from '$lib/components/SiteFooter.svelte';
 
 	type Stage = 'landing' | 'camera' | 'review' | 'analyzing' | 'result' | 'comparison';
 	type Scenario = 'interview' | 'meeting' | 'presentation' | 'profile';
@@ -503,8 +504,20 @@
 
 <header class="site-header" class:compact={stage !== 'landing'}>
 	<button type="button" class="brand" aria-label={copy.header.home} onclick={startOver}>
-		<span class="brand-mark">P</span>
-		<span translate="no">Presence</span>
+		<img
+			class="brand-lockup"
+			src="/presence-logo-assets/presence-lockup.svg"
+			alt=""
+			width="191"
+			height="40"
+		/>
+		<img
+			class="brand-symbol"
+			src="/presence-logo-assets/presence-mark.svg"
+			alt=""
+			width="48"
+			height="56"
+		/>
 	</button>
 	<div class="header-actions">
 		{#if stage === 'landing'}
@@ -1028,14 +1041,18 @@
 	onchange={selectFile}
 />
 
-<footer>
-	<span>Presence</span>
-	<p>{copy.footer.disclaimer}</p>
-	<div class="footer-links">
-		<small>{copy.footer.source}</small>
-		<a href={resolve('/privacy')}>{copy.footer.privacy}</a>
-	</div>
-</footer>
+<SiteFooter
+	tagline={copy.footer.tagline}
+	disclaimer={copy.footer.disclaimer}
+	source={copy.footer.source}
+	status={copy.footer.status}
+	navigationLabel={copy.footer.navigation}
+	primaryHref="/privacy"
+	primaryLabel={copy.footer.privacy}
+	externalLabel={copy.footer.github}
+	externalAriaLabel={copy.footer.githubExternal}
+	externalDestination="repository"
+/>
 
 <style>
 	:global(:root) {
@@ -1112,6 +1129,7 @@
 		height: 74px;
 	}
 	.brand {
+		min-height: 44px;
 		border: 0;
 		background: transparent;
 		padding: 0;
@@ -1126,14 +1144,15 @@
 			serif;
 		letter-spacing: -0.02em;
 	}
-	.brand-mark {
-		width: 34px;
-		height: 34px;
-		border-radius: 50%;
-		display: grid;
-		place-items: center;
-		color: white;
-		background: var(--blue);
+	.brand-lockup {
+		display: block;
+		width: auto;
+		height: 32px;
+	}
+	.brand-symbol {
+		display: none;
+		width: auto;
+		height: 32px;
 	}
 	.header-actions {
 		display: flex;
@@ -2549,44 +2568,6 @@
 		white-space: nowrap;
 		border: 0;
 	}
-	footer {
-		min-height: 90px;
-		border-top: 1px solid var(--line);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 25px;
-		color: #98958d;
-		font-size: 9px;
-		padding: 22px 30px;
-	}
-	footer span {
-		font:
-			600 12px Georgia,
-			serif;
-		color: #66645f;
-	}
-	footer p {
-		padding: 0 25px;
-		border-left: 1px solid var(--line);
-		border-right: 1px solid var(--line);
-	}
-	footer small {
-		font-size: 8px;
-		letter-spacing: 0.1em;
-	}
-	.footer-links {
-		display: flex;
-		align-items: center;
-		gap: 14px;
-	}
-	.footer-links a {
-		color: #65717b;
-		font-size: 9px;
-		font-weight: 700;
-		text-underline-offset: 3px;
-	}
-
 	/* Calm, practical product language: flat surfaces, restrained color, sans-serif hierarchy. */
 	.site-header {
 		background: var(--cream);
@@ -2594,15 +2575,6 @@
 	.brand {
 		font: 700 16px/1 inherit;
 		letter-spacing: -0.01em;
-	}
-	.brand-mark {
-		width: 32px;
-		height: 32px;
-		border: 1px solid #7d8993;
-		border-radius: 7px;
-		background: transparent;
-		color: var(--ink);
-		font-size: 13px;
 	}
 	.hero {
 		min-height: 700px;
@@ -2832,8 +2804,7 @@
 	.section-heading h3,
 	.guidance-grid article > span,
 	.guidance-grid h4,
-	.comparison-outcome h3,
-	footer span {
+	.comparison-outcome h3 {
 		font-family: inherit;
 	}
 	.moment-section {
@@ -2960,8 +2931,14 @@
 		.header-actions {
 			gap: 10px;
 		}
-		.site-header.compact .brand > span:last-child {
+		.brand-lockup {
+			height: 29px;
+		}
+		.site-header.compact .brand-lockup {
 			display: none;
+		}
+		.site-header.compact .brand-symbol {
+			display: block;
 		}
 		.hero {
 			padding: 45px 20px;
@@ -3119,17 +3096,6 @@
 		}
 		.analysis-steps {
 			width: 290px;
-		}
-		footer {
-			flex-wrap: wrap;
-			gap: 10px;
-		}
-		footer p {
-			order: 3;
-			width: 100%;
-			border: 0;
-			text-align: center;
-			margin: 0;
 		}
 		.steps i {
 			width: 25px;

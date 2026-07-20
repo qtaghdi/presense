@@ -316,10 +316,15 @@ export const messages = {
 			captureAgain: 'Capture once more'
 		},
 		footer: {
+			tagline: 'Camera-ready guidance for important moments.',
 			disclaimer:
 				'Practical visual readiness guidance. Not personality, competence, appearance, or medical scoring.',
 			source: 'Analysis by YouCam',
-			privacy: 'Privacy notice'
+			status: 'Hackathon prototype',
+			navigation: 'Footer links',
+			privacy: 'Privacy notice',
+			github: 'GitHub',
+			githubExternal: 'Open the Presence GitHub repository in a new tab'
 		},
 		common: {
 			startOverConfirm: 'Start over and clear this report?'
@@ -634,10 +639,15 @@ export const messages = {
 			captureAgain: '한 번 더 촬영'
 		},
 		footer: {
+			tagline: '중요한 순간 전, 화면 속 첫인상을 준비합니다.',
 			disclaimer:
 				'직접 조절할 수 있는 화면 요소를 위한 가이드이며 성격·역량·외모·의료 평가가 아닙니다.',
 			source: 'YouCam 분석 사용',
-			privacy: '개인정보처리방침'
+			status: '해커톤 프로토타입',
+			navigation: '푸터 링크',
+			privacy: '개인정보처리방침',
+			github: 'GitHub',
+			githubExternal: '새 탭에서 Presence GitHub 저장소 열기'
 		},
 		common: {
 			startOverConfirm: '처음부터 다시 시작하고 현재 리포트를 지울까요?'

@@ -172,8 +172,13 @@ export const privacyMessages = {
 			action: 'Open project issues'
 		},
 		footer: {
+			tagline: 'Clear choices for every photo you share.',
 			home: 'Return to Presence',
-			source: 'Prototype-specific notice · July 20, 2026'
+			source: 'Prototype-specific notice · July 20, 2026',
+			status: 'Privacy-first hackathon prototype',
+			navigation: 'Footer links',
+			issues: 'Project issues',
+			issuesExternal: 'Open project issues in a new tab'
 		}
 	},
 	ko: {
@@ -349,8 +354,13 @@ export const privacyMessages = {
 			action: '프로젝트 Issues 열기'
 		},
 		footer: {
+			tagline: '사진을 공유하는 모든 순간에 분명한 선택권을 제공합니다.',
 			home: 'Presence로 돌아가기',
-			source: '프로토타입 전용 방침 · 2026년 7월 20일'
+			source: '프로토타입 전용 방침 · 2026년 7월 20일',
+			status: '개인정보 보호 중심 해커톤 프로토타입',
+			navigation: '푸터 링크',
+			issues: '프로젝트 Issues',
+			issuesExternal: '새 탭에서 프로젝트 Issues 열기'
 		}
 	}
 } as const;
