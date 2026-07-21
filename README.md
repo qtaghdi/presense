@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  Presence helps you look ready for the moments that matter—interviews, online meetings,<br />
-  presentations, and profile photos—by turning your camera view into clear, practical guidance.
+  Presence helps you look ready for the moments that matter: interviews, online meetings,<br />
+  presentations, and profile photos. It turns your camera view into clear, practical guidance.
 </p>
 
 <p align="center">
@@ -23,7 +23,7 @@
 
 You open your camera before an important call and something feels off. Is the camera too low? Is the lighting washing you out? Is the background distracting? By the time you work it out, the moment has already begun.
 
-Presence gives you a calm, private space to prepare. It looks at the parts of your camera view you can change—framing, lighting, face position, background, and color balance—and turns them into simple actions you can take right away.
+Presence gives you a calm, private space to prepare. It looks at the parts of your camera view you can change, including framing, lighting, face position, background, and color balance, and turns them into simple actions you can take right away.
 
 **Presence does not judge who you are.** It does not score your personality, ability, attractiveness, or professional potential. It helps you shape the setting around you so that you can enter the moment feeling prepared and present.
 
@@ -58,13 +58,13 @@ The goal is not simply to say that one image looks better. Presence helps you un
 
 ## Your image, your choice
 
-Privacy is part of the Presence experience—not an afterthought.
+Privacy is an integral part of the Presence experience.
 
-- **No account required** — Presence does not ask for your name, email address, or user profile.
-- **Live checks stay on your device** — Your continuous camera feed and real-time framing checks are not sent to a server.
-- **Nothing is sent without an action** — An image is used for analysis only after you choose **Create report**.
-- **Images are optimized before upload** — Photos are reduced in the browser before they are submitted for analysis.
-- **A demo is always available** — You can explore the complete product experience with a sample report and without sending a photo to YouCam.
+- **No account required:** Presence does not ask for your name, email address, or user profile.
+- **Live checks stay on your device:** Your continuous camera feed and real-time framing checks are not sent to a server.
+- **Nothing is sent without an action:** An image is used for analysis only after you choose **Create report**.
+- **Images are optimized before upload:** Photos are reduced in the browser before they are submitted for analysis.
+- **A demo is always available:** You can explore the complete product experience with a sample report and without sending a photo to YouCam.
 
 A dedicated privacy policy inside the product explains the experience in full.
 
@@ -72,7 +72,7 @@ A dedicated privacy policy inside the product explains the experience in full.
 
 Presence combines Perfect Corp.'s **YouCam AI Skin Analysis** and **Skin Tone Analysis** to understand how lighting, color, and camera conditions affect your appearance on screen.
 
-These signals are never presented as a measure of beauty or personal worth. Presence uses them only as context for aspects of the scene you can control—such as lighting direction, visual clarity, and color harmony—and reshapes them into respectful, actionable guidance.
+These signals are never presented as a measure of beauty or personal worth. Presence uses them only as context for aspects of the scene you can control, such as lighting direction, visual clarity, and color harmony, and reshapes them into respectful, actionable guidance.
 
 ## What the Presence experience includes
 
