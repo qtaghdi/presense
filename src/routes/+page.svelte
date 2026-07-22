@@ -390,11 +390,11 @@
 			<div class="hero-copy">
 				<p class="eyebrow"><span></span> {copy.landing.eyebrow}</p>
 				<h1 class="stage-heading" bind:this={stageHeading} tabindex="-1">
-					<span>{copy.landing.title}</span>
-					<em>{copy.landing.titleAccent}</em>
+					<span>{scenarioCopy.heroTitle}</span>
+					<em>{scenarioCopy.heroAccent}</em>
 				</h1>
 				<p class="hero-description">
-					<span>{copy.landing.descriptionFirst}</span>
+					<span>{scenarioCopy.heroLead}</span>
 					<span>{copy.landing.descriptionSecond}</span>
 				</p>
 				<div class="scenario-picker">
@@ -454,6 +454,11 @@
 				{/if}
 				<p class="microcopy"><ShieldCheck size={15} /> {copy.landing.microcopy}</p>
 				<p class="boundary-note">{copy.landing.boundary}</p>
+				<ul class="value-points">
+					{#each copy.landing.valuePoints as point (point)}
+						<li><Check size={14} /> {point}</li>
+					{/each}
+				</ul>
 			</div>
 
 			<div class="hero-visual" aria-label={copy.landing.previewAria}>
@@ -496,6 +501,45 @@
 					{#if index < copy.landing.journey.length - 1}<i></i>{/if}
 				{/each}
 			</div>
+		</section>
+
+		<section class="why-presence" aria-labelledby="why-presence-title">
+			<div class="why-heading">
+				<p class="card-label">{copy.landing.whyEyebrow}</p>
+				<h2 id="why-presence-title">{copy.landing.whyTitle}</h2>
+				<p>{copy.landing.whyIntro}</p>
+			</div>
+			<div class="why-grid">
+				{#each copy.landing.whyReasons as reason, index (reason.title)}
+					<article>
+						<div class="why-icon" aria-hidden="true">
+							{#if index === 0}
+								<Camera size={21} />
+							{:else if index === 1}
+								<ScanFace size={21} />
+							{:else}
+								<RefreshCw size={21} />
+							{/if}
+						</div>
+						<span>0{index + 1}</span>
+						<h3>{reason.title}</h3>
+						<p>{reason.description}</p>
+					</article>
+				{/each}
+			</div>
+		</section>
+
+		<section class="landing-cta" aria-labelledby="landing-cta-title">
+			<div>
+				<p class="card-label">{copy.landing.closingEyebrow}</p>
+				<h2 id="landing-cta-title">{copy.landing.closingTitle}</h2>
+				<p>{copy.landing.closingBody}</p>
+			</div>
+			<button type="button" class="primary-button" onclick={() => startExperience(false)}>
+				<Camera size={19} />
+				{copy.landing.closingCta}
+				<ArrowRight size={18} />
+			</button>
 		</section>
 	{:else if stage === 'camera'}
 		<section class="workspace camera-workspace">
@@ -1298,6 +1342,28 @@
 		font-size: 10px;
 		line-height: 1.5;
 	}
+	.value-points {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 18px;
+		padding: 16px 0 0;
+		margin: 16px 0 0;
+		border-top: 1px solid var(--line);
+		list-style: none;
+		color: #596773;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+	}
+	.value-points li {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+	.value-points :global(svg) {
+		color: var(--blue);
+		flex: none;
+	}
 	.inline-status {
 		width: fit-content;
 		max-width: 100%;
@@ -1501,6 +1567,124 @@
 		width: 62px;
 		height: 1px;
 		background: #d8d5cc;
+	}
+	.why-presence {
+		max-width: 1180px;
+		margin: 0 auto;
+		padding: 104px 32px 92px;
+	}
+	.why-heading {
+		max-width: 760px;
+		margin: 0 auto 42px;
+		text-align: center;
+	}
+	.why-heading .card-label {
+		margin: 0 0 16px;
+	}
+	.why-heading h2,
+	.landing-cta h2 {
+		margin: 0;
+		font-size: clamp(34px, 4vw, 48px);
+		font-weight: 700;
+		line-height: 1.12;
+		letter-spacing: -0.04em;
+		text-wrap: balance;
+	}
+	.why-heading > p:last-child {
+		max-width: 660px;
+		margin: 18px auto 0;
+		color: var(--muted);
+		font-size: 14px;
+		line-height: 1.7;
+		text-wrap: pretty;
+	}
+	.why-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1px;
+		border: 1px solid var(--line);
+		background: var(--line);
+	}
+	.why-grid article {
+		position: relative;
+		min-height: 270px;
+		padding: 30px;
+		background: #fff;
+	}
+	.why-grid article > span {
+		position: absolute;
+		top: 31px;
+		right: 30px;
+		color: #a4adb4;
+		font-size: 10px;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+	}
+	.why-icon {
+		width: 42px;
+		height: 42px;
+		display: grid;
+		place-items: center;
+		border-radius: 8px;
+		background: #eaf1f6;
+		color: var(--blue);
+	}
+	.why-grid h3 {
+		margin: 56px 0 0;
+		font-size: 17px;
+		line-height: 1.35;
+		letter-spacing: -0.02em;
+	}
+	.why-grid p {
+		margin: 12px 0 0;
+		color: var(--muted);
+		font-size: 12px;
+		line-height: 1.7;
+		text-wrap: pretty;
+	}
+	.landing-cta {
+		position: relative;
+		max-width: 1116px;
+		margin: 0 auto 104px;
+		padding: 50px 54px;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 48px;
+		align-items: center;
+		overflow: hidden;
+		border-radius: 12px;
+		background:
+			radial-gradient(circle at 82% 20%, rgba(115, 153, 181, 0.3), transparent 38%), #1f2933;
+		color: #fff;
+	}
+	.landing-cta > div {
+		position: relative;
+		z-index: 1;
+		max-width: 680px;
+	}
+	.landing-cta .card-label {
+		margin: 0 0 15px;
+		color: #aebdca;
+	}
+	.landing-cta h2 {
+		font-size: clamp(30px, 3.5vw, 42px);
+	}
+	.landing-cta > div > p:last-child {
+		max-width: 610px;
+		margin: 16px 0 0;
+		color: #c5cdd3;
+		font-size: 13px;
+		line-height: 1.65;
+	}
+	.landing-cta .primary-button {
+		position: relative;
+		z-index: 1;
+		background: #fff;
+		color: var(--ink);
+		white-space: nowrap;
+	}
+	.landing-cta .primary-button:hover {
+		background: #edf3f7;
 	}
 	.workspace {
 		max-width: 1120px;
@@ -2864,6 +3048,27 @@
 		.hero-visual {
 			min-height: 500px;
 		}
+		.why-presence {
+			padding-top: 86px;
+		}
+		.why-grid {
+			grid-template-columns: 1fr;
+		}
+		.why-grid article {
+			min-height: 0;
+		}
+		.why-grid h3 {
+			margin-top: 30px;
+		}
+		.landing-cta {
+			margin-right: 32px;
+			margin-left: 32px;
+			grid-template-columns: 1fr;
+			gap: 28px;
+		}
+		.landing-cta .primary-button {
+			width: fit-content;
+		}
 		.camera-layout {
 			grid-template-columns: 1fr;
 		}
@@ -3035,6 +3240,32 @@
 		}
 		.how-it-works > div > i {
 			display: none;
+		}
+		.why-presence {
+			padding: 74px 20px 68px;
+		}
+		.why-heading {
+			margin-bottom: 30px;
+			text-align: left;
+		}
+		.why-heading > p:last-child {
+			margin-left: 0;
+		}
+		.why-grid article {
+			padding: 24px;
+		}
+		.why-grid article > span {
+			top: 25px;
+			right: 24px;
+		}
+		.landing-cta {
+			margin: 0 20px 74px;
+			padding: 36px 24px;
+			gap: 24px;
+		}
+		.landing-cta .primary-button {
+			width: 100%;
+			white-space: normal;
 		}
 		.workspace {
 			padding: 42px 17px 65px;

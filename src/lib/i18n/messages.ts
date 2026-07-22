@@ -16,12 +16,9 @@ export const messages = {
 			completedStep: 'completed'
 		},
 		landing: {
-			eyebrow: 'FIRST IMPRESSION CHECK',
-			title: 'Show up ready.',
-			titleAccent: 'Before the moment begins.',
-			descriptionFirst: 'A strong first impression starts before you enter the room.',
+			eyebrow: '30-SECOND INTERVIEW CAMERA CHECK',
 			descriptionSecond:
-				'Presence checks framing, light, face position, background, and color harmony—then turns them into practical next steps.',
+				'Presence checks framing, light, face position, background, and color harmony—then gives you practical changes you can verify with a second photo.',
 			scenarioLabel: 'WHAT ARE YOU PREPARING FOR?',
 			boundary:
 				'Practical visual guidance—not personality, competence, appearance, or medical scoring.',
@@ -34,20 +31,59 @@ export const messages = {
 			readyCapture: 'Ready to capture',
 			portraitAlt: 'Person ready for an online conversation',
 			framingGood: 'Framing looks good',
-			presence: 'PRESENCE',
-			previewTitle: 'Ready for your next conversation.',
-			previewBody: 'Framing, light, background, and color feel intentional.',
-			journeyEyebrow: 'ONE CONTINUOUS JOURNEY',
+			presence: 'CAMERA READY',
+			previewTitle: 'Know what to change before you join.',
+			previewBody: 'Three practical actions, followed by a recapture to verify the difference.',
+			valuePoints: ['About 30 seconds', 'Clear actions, not raw scores', 'Verified by recapture'],
+			journeyEyebrow: 'FROM UNCERTAINTY TO A READY FRAME',
 			journey: [
-				{ title: 'Camera Check', description: 'Live guidance for framing, light, and background' },
-				{ title: 'Presence Review', description: 'See the visual factors shaping the moment' },
-				{ title: 'Presence Upgrade', description: 'Adjust, recapture, and compare the difference' }
-			]
+				{
+					title: 'See what feels off',
+					description: 'Check framing, light, face position, and background'
+				},
+				{
+					title: 'Know what to do',
+					description: 'Turn camera and YouCam signals into prioritized actions'
+				},
+				{
+					title: 'Prove the change',
+					description: 'Adjust, recapture, and compare the actual difference'
+				}
+			],
+			whyEyebrow: 'WHY PRESENCE',
+			whyTitle: 'Practice your answers. Rehearse your frame.',
+			whyIntro:
+				'Camera setup is easy to ignore until the call begins. Presence gives that last-minute uncertainty a simple, repeatable workflow.',
+			whyReasons: [
+				{
+					title: 'Catch what rehearsal misses',
+					description:
+						'Spot a low camera, uneven light, distracting background, or off-center frame while there is still time to fix it.'
+				},
+				{
+					title: 'Get a next move, not a judgment',
+					description:
+						'Presence translates visual signals into a short list of changes to your setup. It never evaluates your ability or worth.'
+				},
+				{
+					title: 'Verify instead of guessing',
+					description:
+						'Apply the guidance, take another photo, and compare both reports. The improvement is measured by your recapture—not promised by a filter.'
+				}
+			],
+			closingEyebrow: 'READY WHEN THE MOMENT STARTS',
+			closingTitle: 'Focus on what you came to say—not whether your camera looks right.',
+			closingBody:
+				'No account, no beauty score, and no change to who you are. Just a clearer setup for the moment that matters.',
+			closingCta: 'Check my camera setup'
 		},
 		scenarios: {
 			interview: {
 				label: 'Interview',
 				description: 'Show up composed before the first question.',
+				heroTitle: 'Your interview starts',
+				heroAccent: 'before the first question.',
+				heroLead: 'You prepared what to say. Now prepare what the camera sees.',
 				cta: 'Prepare for my interview',
 				previewTitle: 'Ready for the first question.',
 				cameraTitle: 'Let’s prepare your interview frame.',
@@ -67,6 +103,9 @@ export const messages = {
 			meeting: {
 				label: 'Meeting',
 				description: 'Look clear and engaged in everyday calls.',
+				heroTitle: 'Your meeting starts',
+				heroAccent: 'before you click Join.',
+				heroLead: 'You prepared the agenda. Now prepare the frame you will enter with.',
 				cta: 'Prepare for my meeting',
 				previewTitle: 'Clear, present, and ready to join.',
 				cameraTitle: 'Let’s set up your meeting frame.',
@@ -86,6 +125,9 @@ export const messages = {
 			presentation: {
 				label: 'Presentation',
 				description: 'Hold attention before the first slide.',
+				heroTitle: 'Your presentation starts',
+				heroAccent: 'before the first slide.',
+				heroLead: 'You prepared the story. Now prepare the frame that will carry it.',
 				cta: 'Prepare for my presentation',
 				previewTitle: 'Ready to hold the room.',
 				cameraTitle: 'Let’s build your presentation frame.',
@@ -106,6 +148,9 @@ export const messages = {
 			profile: {
 				label: 'Profile photo',
 				description: 'Create a polished image that still feels like you.',
+				heroTitle: 'Your profile speaks',
+				heroAccent: 'before anyone reads it.',
+				heroLead: 'You shaped the story of your work. Now prepare the image that introduces it.',
 				cta: 'Prepare my profile photo',
 				previewTitle: 'Polished, natural, and recognizably you.',
 				cameraTitle: 'Let’s compose your profile photo.',
@@ -363,12 +408,9 @@ export const messages = {
 			completedStep: '완료'
 		},
 		landing: {
-			eyebrow: '첫인상 준비 체크',
-			title: '화면에 들어가기 전,',
-			titleAccent: '첫인상을 준비하세요.',
-			descriptionFirst: '좋은 첫인상은 중요한 순간에 들어가기 전부터 시작됩니다.',
+			eyebrow: '30초 온라인 면접 카메라 체크',
 			descriptionSecond:
-				'Presence가 구도, 조명, 얼굴 위치, 배경, 컬러 조화를 확인하고 바로 실행할 수 있는 개선 방법을 제안합니다.',
+				'Presence가 구도, 조명, 얼굴 위치, 배경, 컬러 조화를 확인하고, 두 번째 촬영으로 검증할 수 있는 실용적인 개선 방법을 제안합니다.',
 			scenarioLabel: '어떤 순간을 준비하고 있나요?',
 			boundary: '성격·역량·외모·의료 평가가 아닌, 직접 조절할 수 있는 화면 요소만 안내합니다.',
 			startCamera: '카메라로 시작하기',
@@ -380,20 +422,50 @@ export const messages = {
 			readyCapture: '촬영 준비 완료',
 			portraitAlt: '온라인 대화를 준비하는 사람',
 			framingGood: '구도가 좋습니다',
-			presence: 'PRESENCE',
-			previewTitle: '다음 대화를 위한 준비가 끝났어요.',
-			previewBody: '구도와 조명, 배경, 컬러가 의도적으로 정돈되어 있습니다.',
-			journeyEyebrow: '하나로 이어지는 준비 과정',
+			presence: '카메라 준비도',
+			previewTitle: '입장하기 전에 무엇을 바꿀지 알 수 있어요.',
+			previewBody: '실행 가능한 개선 3가지를 받고, 다시 촬영해 실제 차이를 확인합니다.',
+			valuePoints: ['약 30초 소요', '점수보다 명확한 행동', '재촬영으로 직접 검증'],
+			journeyEyebrow: '막연함을 준비된 화면으로 바꾸는 과정',
 			journey: [
-				{ title: '카메라 체크', description: '구도·조명·배경을 실시간으로 안내' },
-				{ title: '프레즌스 리뷰', description: '순간의 인상을 만드는 화면 요소 확인' },
-				{ title: '프레즌스 개선', description: '조정하고 다시 촬영해 전후를 비교' }
-			]
+				{ title: '어색한 이유 찾기', description: '구도·조명·얼굴 위치·배경을 함께 확인' },
+				{ title: '바꿀 것 정하기', description: '카메라와 YouCam 신호를 우선순위 행동으로 변환' },
+				{ title: '변화 확인하기', description: '조정하고 다시 촬영해 실제 전후를 비교' }
+			],
+			whyEyebrow: '왜 PRESENCE인가요?',
+			whyTitle: '답변을 연습하듯, 화면도 리허설하세요.',
+			whyIntro:
+				'카메라 환경은 통화가 시작된 뒤에야 눈에 들어오기 쉽습니다. Presence는 막연한 불안을 간단하고 반복 가능한 준비 과정으로 바꿉니다.',
+			whyReasons: [
+				{
+					title: '연습이 놓친 부분을 발견해요',
+					description:
+						'낮은 카메라, 고르지 않은 조명, 산만한 배경, 치우친 구도를 아직 바꿀 시간이 있을 때 찾아냅니다.'
+				},
+				{
+					title: '평가 대신 다음 행동을 알려줘요',
+					description:
+						'시각 신호를 촬영 환경에 적용할 짧은 개선 목록으로 바꿉니다. 능력이나 사람의 가치를 평가하지 않습니다.'
+				},
+				{
+					title: '막연히 믿지 않고 직접 확인해요',
+					description:
+						'가이드를 적용하고 다시 촬영해 두 리포트를 비교합니다. 필터의 약속이 아니라 재촬영 결과로 변화를 확인합니다.'
+				}
+			],
+			closingEyebrow: '중요한 순간이 시작될 때 준비된 상태로',
+			closingTitle: '카메라 걱정 대신, 전하려는 말에 집중하세요.',
+			closingBody:
+				'가입도, 미용 점수도, 나를 바꾸는 과정도 없습니다. 중요한 순간을 위한 더 또렷한 촬영 환경만 준비합니다.',
+			closingCta: '내 카메라 화면 확인하기'
 		},
 		scenarios: {
 			interview: {
 				label: '면접',
 				description: '첫 질문 전부터 차분하고 준비된 인상을 만드세요.',
+				heroTitle: '면접은 첫 질문 전에',
+				heroAccent: '이미 시작됩니다.',
+				heroLead: '답변을 준비했다면, 이제 카메라에 보이는 화면을 준비하세요.',
 				cta: '면접 준비 시작하기',
 				previewTitle: '첫 질문을 받을 준비가 됐어요.',
 				cameraTitle: '면접에 맞는 화면을 준비해볼까요?',
@@ -412,6 +484,9 @@ export const messages = {
 			meeting: {
 				label: '온라인 미팅',
 				description: '일상적인 화상 대화에서도 또렷하고 참여감 있게.',
+				heroTitle: '온라인 미팅은',
+				heroAccent: '입장 버튼을 누르기 전에 시작됩니다.',
+				heroLead: '안건을 준비했다면, 이제 대화에 들어갈 화면을 준비하세요.',
 				cta: '미팅 준비 시작하기',
 				previewTitle: '또렷하고 편안하게, 입장할 준비 완료.',
 				cameraTitle: '미팅에 편안한 화면을 맞춰볼까요?',
@@ -430,6 +505,9 @@ export const messages = {
 			presentation: {
 				label: '발표',
 				description: '첫 슬라이드 전부터 시선을 모으는 화면을 만드세요.',
+				heroTitle: '발표는 첫 슬라이드 전에',
+				heroAccent: '이미 시작됩니다.',
+				heroLead: '이야기를 준비했다면, 이제 그 이야기를 전달할 화면을 준비하세요.',
 				cta: '발표 준비 시작하기',
 				previewTitle: '화면의 시선을 이끌 준비가 됐어요.',
 				cameraTitle: '발표에 집중되는 화면을 만들어볼까요?',
@@ -448,6 +526,9 @@ export const messages = {
 			profile: {
 				label: '프로필 사진',
 				description: '나답지만 정돈된 프로필 이미지를 만드세요.',
+				heroTitle: '프로필은 내용을 읽기 전에',
+				heroAccent: '먼저 보입니다.',
+				heroLead: '경력의 이야기를 정리했다면, 이제 그 이야기를 소개할 이미지를 준비하세요.',
 				cta: '프로필 사진 준비하기',
 				previewTitle: '정돈되어 있지만 자연스럽게, 나다운 모습.',
 				cameraTitle: '프로필 사진 구도를 잡아볼까요?',
