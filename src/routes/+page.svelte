@@ -1584,7 +1584,7 @@
 	.how-it-works {
 		border-top: 1px solid var(--line);
 		border-bottom: 1px solid var(--line);
-		padding: 31px 32px 35px;
+		padding: 44px 32px 48px;
 		text-align: center;
 		background: rgba(255, 255, 255, 0.35);
 	}
@@ -1596,23 +1596,30 @@
 		color: #98958d;
 	}
 	.how-it-works > div {
-		max-width: 920px;
-		margin: 22px auto 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		max-width: 1060px;
+		margin: 24px auto 0;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
 	}
 	.how-it-works article {
+		min-width: 0;
+		min-height: 118px;
+		padding: 20px 22px;
+		border: 1px solid #dbe2e7;
+		border-radius: 10px;
+		background: #f8fafb;
 		display: grid;
-		grid-template-columns: 34px auto;
-		column-gap: 10px;
+		grid-template-columns: 38px minmax(0, 1fr);
+		grid-template-rows: auto 1fr;
+		column-gap: 14px;
 		text-align: left;
-		align-items: center;
+		align-items: start;
 	}
 	.how-it-works article span {
 		grid-row: 1/3;
-		width: 32px;
-		height: 32px;
+		width: 36px;
+		height: 36px;
 		border: 1px solid #b8c7c0;
 		border-radius: 50%;
 		display: grid;
@@ -1623,17 +1630,18 @@
 			serif;
 	}
 	.how-it-works article strong {
-		font-size: 13px;
+		align-self: center;
+		font-size: 14px;
+		line-height: 1.35;
 	}
 	.how-it-works article small {
 		font-size: 11px;
+		line-height: 1.55;
 		color: #95938c;
-		margin-top: 4px;
+		margin-top: 7px;
 	}
 	.how-it-works > div > i {
-		width: 62px;
-		height: 1px;
-		background: #d8d5cc;
+		display: none;
 	}
 	.why-presence {
 		max-width: 1180px;
@@ -3299,11 +3307,14 @@
 		}
 		.how-it-works > div {
 			display: grid;
+			grid-template-columns: 1fr;
 			gap: 18px;
 			justify-content: stretch;
 		}
 		.how-it-works article {
 			width: 100%;
+			min-height: 0;
+			padding: 18px;
 		}
 		.how-it-works > div > i {
 			display: none;
