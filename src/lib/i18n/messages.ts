@@ -16,7 +16,6 @@ export const messages = {
 			completedStep: 'completed'
 		},
 		landing: {
-			eyebrow: '30-SECOND INTERVIEW CAMERA CHECK',
 			descriptionSecond:
 				'Presence checks framing, light, face position, background, and color harmony. It then gives you practical changes you can verify with a second photo.',
 			scenarioLabel: 'WHAT ARE YOU PREPARING FOR?',
@@ -29,9 +28,17 @@ export const messages = {
 			previewAria: 'Presence report preview',
 			cameraCheck: 'Camera Check',
 			readyCapture: 'Ready to capture',
-			portraitAlt: 'Person ready for an online conversation',
+			portraitAlt: 'Professional preparing at a laptop camera in a home office',
 			framingGood: 'Framing looks good',
 			presence: 'CAMERA READY',
+			sampleReport: 'SAMPLE REPORT',
+			sampleBasis: 'How this example score is built',
+			sampleNote: 'Your report is calculated from the photo you submit.',
+			previewFactors: [
+				{ label: 'Framing', score: 88 },
+				{ label: 'Lighting', score: 80 },
+				{ label: 'Background', score: 78 }
+			],
 			previewTitle: 'Know what to change before you join.',
 			previewBody: 'Three practical actions, followed by a recapture to verify the difference.',
 			valuePoints: ['About 30 seconds', 'Clear actions, not raw scores', 'Verified by recapture'],
@@ -79,6 +86,7 @@ export const messages = {
 		},
 		scenarios: {
 			interview: {
+				eyebrow: '30-SECOND INTERVIEW CAMERA CHECK',
 				label: 'Interview',
 				description: 'Show up composed before the first question.',
 				heroTitle: 'Your interview starts',
@@ -101,6 +109,7 @@ export const messages = {
 				]
 			},
 			meeting: {
+				eyebrow: '30-SECOND MEETING CAMERA CHECK',
 				label: 'Meeting',
 				description: 'Look clear and engaged in everyday calls.',
 				heroTitle: 'Your meeting starts',
@@ -123,6 +132,7 @@ export const messages = {
 				]
 			},
 			presentation: {
+				eyebrow: '30-SECOND PRESENTATION CAMERA CHECK',
 				label: 'Presentation',
 				description: 'Hold attention before the first slide.',
 				heroTitle: 'Your presentation starts',
@@ -146,6 +156,7 @@ export const messages = {
 				]
 			},
 			profile: {
+				eyebrow: '30-SECOND PROFILE PHOTO CHECK',
 				label: 'Profile photo',
 				description: 'Create a polished image that still feels like you.',
 				heroTitle: 'Your profile speaks',
@@ -406,7 +417,6 @@ export const messages = {
 			completedStep: '완료'
 		},
 		landing: {
-			eyebrow: '30초 온라인 면접 카메라 체크',
 			descriptionSecond:
 				'Presence가 구도, 조명, 얼굴 위치, 배경, 컬러 조화를 확인하고, 두 번째 촬영으로 검증할 수 있는 실용적인 개선 방법을 제안합니다.',
 			scenarioLabel: '어떤 순간을 준비하고 있나요?',
@@ -418,9 +428,17 @@ export const messages = {
 			previewAria: 'Presence 리포트 미리보기',
 			cameraCheck: '카메라 체크',
 			readyCapture: '촬영 준비 완료',
-			portraitAlt: '온라인 대화를 준비하는 사람',
+			portraitAlt: '홈 오피스에서 노트북 카메라를 준비하는 직장인',
 			framingGood: '구도가 좋습니다',
 			presence: '카메라 준비도',
+			sampleReport: '예시 리포트',
+			sampleBasis: '이 예시 점수의 구성',
+			sampleNote: '실제 리포트는 직접 제출한 사진으로 계산합니다.',
+			previewFactors: [
+				{ label: '구도', score: 88 },
+				{ label: '조명', score: 80 },
+				{ label: '배경', score: 78 }
+			],
 			previewTitle: '입장하기 전에 무엇을 바꿀지 알 수 있어요.',
 			previewBody: '실행 가능한 개선 3가지를 받고, 다시 촬영해 실제 차이를 확인합니다.',
 			valuePoints: ['약 30초 소요', '점수보다 명확한 행동', '재촬영으로 직접 검증'],
@@ -459,6 +477,7 @@ export const messages = {
 		},
 		scenarios: {
 			interview: {
+				eyebrow: '면접 전 30초 카메라 체크',
 				label: '면접',
 				description: '첫 질문 전부터 차분하고 준비된 인상을 만드세요.',
 				heroTitle: '면접은 첫 질문 전에',
@@ -480,6 +499,7 @@ export const messages = {
 				]
 			},
 			meeting: {
+				eyebrow: '미팅 전 30초 카메라 체크',
 				label: '온라인 미팅',
 				description: '일상적인 화상 대화에서도 또렷하고 참여감 있게.',
 				heroTitle: '온라인 미팅은',
@@ -501,6 +521,7 @@ export const messages = {
 				]
 			},
 			presentation: {
+				eyebrow: '발표 전 30초 카메라 체크',
 				label: '발표',
 				description: '첫 슬라이드 전부터 시선을 모으는 화면을 만드세요.',
 				heroTitle: '발표는 첫 슬라이드 전에',
@@ -522,6 +543,7 @@ export const messages = {
 				]
 			},
 			profile: {
+				eyebrow: '30초 프로필 사진 체크',
 				label: '프로필 사진',
 				description: '나답지만 정돈된 프로필 이미지를 만드세요.',
 				heroTitle: '프로필은 내용을 읽기 전에',
@@ -764,8 +786,15 @@ export const messages = {
 } as const;
 
 export type Locale = keyof typeof messages;
+export type Scenario = keyof (typeof messages)['en']['scenarios'];
 export type AppCopy = (typeof messages)[Locale];
 
 export function isLocale(value: string | null): value is Locale {
 	return value === 'en' || value === 'ko';
+}
+
+export function isScenario(value: string | null): value is Scenario {
+	return (
+		value === 'interview' || value === 'meeting' || value === 'presentation' || value === 'profile'
+	);
 }

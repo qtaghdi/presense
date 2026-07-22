@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { resolve } from '$app/paths';
 	import {
 		ArrowLeft,
@@ -18,14 +18,19 @@
 	const copy = $derived(privacyMessages[locale]);
 
 	onMount(() => {
-		const savedLocale = localStorage.getItem('presence-locale');
+		const savedLocale =
+			document.documentElement.dataset.presenceLocale ?? localStorage.getItem('presence-locale');
 		if (isLocale(savedLocale)) locale = savedLocale;
 		document.documentElement.lang = locale;
+		void tick().then(() => {
+			document.documentElement.classList.remove('presence-preferences-pending');
+		});
 	});
 
 	function setLocale(nextLocale: Locale) {
 		locale = nextLocale;
 		localStorage.setItem('presence-locale', nextLocale);
+		document.documentElement.dataset.presenceLocale = nextLocale;
 		document.documentElement.lang = nextLocale;
 	}
 </script>

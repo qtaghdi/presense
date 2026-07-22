@@ -4,6 +4,44 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<script>
+			(() => {
+				try {
+					const savedLocale = localStorage.getItem('presence-locale');
+					const savedScenario = localStorage.getItem('presence-scenario');
+					const locale = savedLocale === 'ko' ? 'ko' : 'en';
+					const scenarios = ['interview', 'meeting', 'presentation', 'profile'];
+					const scenario = scenarios.includes(savedScenario) ? savedScenario : 'interview';
+
+					document.documentElement.dataset.presenceLocale = locale;
+					document.documentElement.dataset.presenceScenario = scenario;
+					document.documentElement.lang = locale;
+
+					if (locale !== 'en' || scenario !== 'interview') {
+						document.documentElement.classList.add('presence-preferences-pending');
+						window.setTimeout(() => {
+							document.documentElement.classList.remove('presence-preferences-pending');
+						}, 1600);
+					}
+				} catch {
+					// The default English interview view remains available if browser storage is blocked.
+				}
+			})();
+		</script>
+		<style>
+			html.presence-preferences-pending body::before {
+				content: '';
+				position: fixed;
+				inset: 0;
+				z-index: 9999;
+				background: #f6f7f8 url('/presence-logo-assets/presence-mark.svg') center / 36px auto
+					no-repeat;
+			}
+
+			html.presence-preferences-pending body > div {
+				visibility: hidden;
+			}
+		</style>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

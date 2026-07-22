@@ -28,7 +28,7 @@
 		prepareImageForUpload,
 		readImageFile
 	} from '$lib/domains/analysis/client/public';
-	import { isLocale, messages, type Locale } from '$lib/i18n/messages';
+	import { isLocale, isScenario, messages, type Locale, type Scenario } from '$lib/i18n/messages';
 	import type { CameraQuality } from '$lib/domains/camera/shared/public';
 	import { captureCameraFrame, inspectFrame } from '$lib/domains/camera/client/public';
 	import {
@@ -51,7 +51,6 @@
 	} from './report-view-model';
 
 	type Stage = 'landing' | 'camera' | 'review' | 'analyzing' | 'result' | 'comparison';
-	type Scenario = 'interview' | 'meeting' | 'presentation' | 'profile';
 	const scenarios: Scenario[] = ['interview', 'meeting', 'presentation', 'profile'];
 
 	let stage = $state<Stage>('landing');
@@ -114,11 +113,17 @@
 	const appearanceInsights = $derived(buildAppearanceInsights(result, quality, copy.report));
 
 	onMount(() => {
-		const savedLocale = localStorage.getItem('presence-locale');
+		const savedLocale =
+			document.documentElement.dataset.presenceLocale ?? localStorage.getItem('presence-locale');
 		if (isLocale(savedLocale)) locale = savedLocale;
-		const savedScenario = localStorage.getItem('presence-scenario');
+		const savedScenario =
+			document.documentElement.dataset.presenceScenario ??
+			localStorage.getItem('presence-scenario');
 		if (isScenario(savedScenario)) scenario = savedScenario;
 		document.documentElement.lang = locale;
+		void tick().then(() => {
+			document.documentElement.classList.remove('presence-preferences-pending');
+		});
 		previousCapture = readBeforeCapture();
 		return () => {
 			stopCamera();
@@ -129,16 +134,14 @@
 	function setLocale(nextLocale: Locale) {
 		locale = nextLocale;
 		localStorage.setItem('presence-locale', nextLocale);
+		document.documentElement.dataset.presenceLocale = nextLocale;
 		document.documentElement.lang = nextLocale;
-	}
-
-	function isScenario(value: string | null): value is Scenario {
-		return scenarios.includes(value as Scenario);
 	}
 
 	function setScenario(nextScenario: Scenario) {
 		scenario = nextScenario;
 		localStorage.setItem('presence-scenario', nextScenario);
+		document.documentElement.dataset.presenceScenario = nextScenario;
 	}
 
 	async function changeStage(nextStage: Stage) {
@@ -388,7 +391,7 @@
 	{#if stage === 'landing'}
 		<section class="hero">
 			<div class="hero-copy">
-				<p class="eyebrow"><span></span> {copy.landing.eyebrow}</p>
+				<p class="eyebrow"><span></span> {scenarioCopy.eyebrow}</p>
 				<h1 class="stage-heading" bind:this={stageHeading} tabindex="-1">
 					<span>{scenarioCopy.heroTitle}</span>
 					<em>{scenarioCopy.heroAccent}</em>
@@ -465,13 +468,14 @@
 				<div class="preview-window">
 					<div class="preview-toolbar">
 						<span><Camera size={15} /> {scenarioCopy.label}</span>
+						<strong class="sample-badge">{copy.landing.sampleReport}</strong>
 						<small><i></i> {copy.landing.readyCapture}</small>
 					</div>
 					<div class="preview-image">
 						<img
-							src="/presence-preview.jpg"
+							src="/presence-webcam-preview.jpg"
 							alt={copy.landing.portraitAlt}
-							width="900"
+							width="906"
 							height="1132"
 							fetchpriority="high"
 						/>
@@ -486,6 +490,17 @@
 							<strong>{scenarioCopy.previewTitle}</strong>
 							<span>{copy.landing.previewBody}</span>
 						</div>
+					</div>
+					<div class="preview-breakdown">
+						<div>
+							<strong>{copy.landing.sampleBasis}</strong>
+							<small>{copy.landing.sampleNote}</small>
+						</div>
+						<ul>
+							{#each copy.landing.previewFactors as factor (factor.label)}
+								<li><span>{factor.label}</span><strong>{factor.score}</strong></li>
+							{/each}
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -1407,9 +1422,10 @@
 	.preview-toolbar {
 		height: 54px;
 		padding: 0 18px;
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
 		align-items: center;
-		justify-content: space-between;
+		gap: 10px;
 		border-bottom: 1px solid #e4e1d9;
 		background: #fffefa;
 	}
@@ -1425,6 +1441,7 @@
 		letter-spacing: 0.02em;
 	}
 	.preview-toolbar small {
+		justify-self: end;
 		color: #728078;
 		font-size: 10px;
 		letter-spacing: 0.06em;
@@ -1435,6 +1452,17 @@
 		height: 6px;
 		border-radius: 50%;
 		background: #779a84;
+	}
+	.sample-badge {
+		padding: 5px 7px;
+		border-radius: 999px;
+		background: #e8eff5;
+		color: #46667e;
+		font-size: 8px;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		white-space: nowrap;
 	}
 	.preview-image {
 		position: relative;
@@ -1510,6 +1538,48 @@
 		margin-left: 3px;
 		color: #99968e;
 		font: 8px sans-serif;
+	}
+	.preview-breakdown {
+		padding: 14px 19px 16px;
+		border-top: 1px solid #e4e1d9;
+		background: #f8fafb;
+	}
+	.preview-breakdown > div {
+		display: grid;
+		gap: 3px;
+	}
+	.preview-breakdown > div strong {
+		color: #465663;
+		font-size: 10px;
+	}
+	.preview-breakdown > div small {
+		color: #8a949b;
+		font-size: 8px;
+		line-height: 1.4;
+	}
+	.preview-breakdown ul {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 7px;
+		padding: 0;
+		margin: 11px 0 0;
+		list-style: none;
+	}
+	.preview-breakdown li {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 8px;
+		padding: 8px 9px;
+		border: 1px solid #dce3e8;
+		border-radius: 6px;
+		background: #fff;
+		color: #6f7b84;
+		font-size: 9px;
+	}
+	.preview-breakdown li strong {
+		color: #2f4352;
+		font-size: 10px;
 	}
 	.how-it-works {
 		border-top: 1px solid var(--line);
